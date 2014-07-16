@@ -1,9 +1,9 @@
-MLAndrewNg
+#MLAndrewNg
 ==========
-Programming Lesson 2
+##Programming Lesson 2
 
 ==========
-CostFunction
+###CostFunction
 
 function [J, grad] = costFunction(theta, X, y)
 %COSTFUNCTION Compute cost and gradient for logistic regression
@@ -47,7 +47,7 @@ endfor
 % =============================================================
 
 ===========
-sigmoid 
+###sigmoid 
 
 function g = sigmoid(z)
 %SIGMOID Compute sigmoid functoon
