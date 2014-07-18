@@ -29,11 +29,19 @@ X = [ones(m, 1), X];
 %       are in rows, then, you can use max(A, [], 2) to obtain the max 
 %       for each row.
 %       
+
 h = sigmoid(X * all_theta');
 
 for i = 1 : m
 p(i) = find(h(i,:) == max(h(i,:)));
 end
+
+% Alternative answer
+% ========================
+% predict = sigmoid(X*all_theta');
+% [predict_max, index_max] = max(predict, [], 2);
+% p = index_max;
+
 % =========================================================================
 
 end
