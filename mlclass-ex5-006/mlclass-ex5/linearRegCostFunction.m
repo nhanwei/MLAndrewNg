@@ -24,8 +24,10 @@ penalty = (lambda / (2 * m)) * sum(theta(2:end).^2);
 J = sum((X * theta - y).^2) ./ (2 * m) + penalty;
 
 grad(1) = sum((X * theta - y) .* X(:,1)) ./ m;
-grad(2) = sum((X * theta - y) .* X(:,2)) ./ m + lambda * theta(2) / m;
 
+for i = 2:size(theta, 1)
+	grad(i) = sum((X * theta - y) .* X(:,i)) ./ m + lambda * theta(i) / m;
+end
 
 
 

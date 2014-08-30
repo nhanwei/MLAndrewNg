@@ -99,7 +99,11 @@ while i < abs(length)                                      % while not finished
       else
         A = 6*(f2-f3)/z3+3*(d2+d3);                                 % cubic fit
         B = 3*(f3-f2)-z3*(d3+2*d2);
-        z2 = (sqrt(B*B-A*d2*z3*z3)-B)/A;       % numerical error possible - ok!
+        if (abs(A) < 1e-25)
+ 		 z2 = inf;
+		else 
+ 		 z2 = (sqrt(B*B-A*d2*z3*z3)-B)/A;
+		end       % numerical error possible - ok!
       end
       if isnan(z2) | isinf(z2)
         z2 = z3/2;                  % if we had a numerical problem then bisect
@@ -121,7 +125,14 @@ while i < abs(length)                                      % while not finished
     end
     A = 6*(f2-f3)/z3+3*(d2+d3);                      % make cubic extrapolation
     B = 3*(f3-f2)-z3*(d3+2*d2);
-    z2 = -d2*z3*z3/(B+sqrt(B*B-A*d2*z3*z3));        % num. error possible - ok!
+    C = (B+sqrt(B*B-A*d2*z3*z3));
+		if (abs(C) < 1e-25)
+		  z2 = inf;
+		else
+		  z2 = -d2*z3*z3/C;
+		end
+    
+            % num. error possible - ok!
     if ~isreal(z2) | isnan(z2) | isinf(z2) | z2 < 0   % num prob or wrong sign?
       if limit < -0.5                               % if we have no upper limit
         z2 = z1 * (EXT-1);                 % the extrapolate the maximum amount
