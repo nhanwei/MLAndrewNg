@@ -22,20 +22,17 @@ grad = zeros(size(theta));
 
 for i = 1 : m
 	J = J + ( - y(i) * log(sigmoid(X(i, :) * theta)) - (1 - y(i)) * log(1 - sigmoid(X(i, :) * theta)));
-endfor
+end
 
 J = J ./ m;
 
 for j = 1 : size(theta)
 	part = 0;
-
 	for i = 1 : m
 		part = part + (sigmoid(X(i, :) * theta) - y(i)) * X(i, j);
-	endfor
-	
-
+	end
 	grad(j) = part ./ m;
-endfor
+end
 
 % =============================================================
 

@@ -32,13 +32,12 @@ X = [ones(m, 1), X];
 
 h = sigmoid(X * all_theta');
 
-<<<<<<< HEAD
 for i = 1 : m 
 p(m) = find(h(i,:) == max(h(i,:)), 1);
-=======
+end
+
 for i = 1 : m
 p(i) = find(h(i,:) == max(h(i,:)));
->>>>>>> FETCH_HEAD
 end
 
 % Alternative answer
